@@ -27,24 +27,52 @@ const Header = () => {
     margin-top: 100px;
   `;
 
+  const navBar = css`
+    text-transform: uppercase;
+
+    ul {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    li {
+      list-style: none;
+      display: inline-block;
+      text-align: center;
+      padding: 10px;
+    }
+  `;
+
   return (
-    <div css={navWrapper}>
-      <div css={headerLogo}>
-        <Link href="/">
-          <a>
-            <Image src={Logo} alt="Logo" />
-          </a>
-        </Link>
-      </div>
-      <div css={headerCart}>
-        <div css={cart}>
-          <span>Items in Cart: 0</span>
+    <div>
+      <div css={navWrapper}>
+        <div css={headerLogo}>
           <Link href="/">
             <a>
-              <FontAwesomeIcon icon={faShoppingCart} />
+              <Image src={Logo} alt="Logo" />
             </a>
           </Link>
         </div>
+        <div css={headerCart}>
+          <div css={cart}>
+            <span>Items in Cart: 0</span>
+            <Link href="/">
+              <a>
+                <FontAwesomeIcon icon={faShoppingCart} />
+              </a>
+            </Link>
+          </div>
+        </div>
+      </div>
+      <div css={navBar}>
+        <ul>
+          <li>All Jerseys</li>
+          <li>WM Jerseys</li>
+          <li>EM Jerseys</li>
+          <li>COPA AMERICA Jerseys</li>
+          <li>Retro Jerseys</li>
+          <li>CART</li>
+        </ul>
       </div>
     </div>
   );
