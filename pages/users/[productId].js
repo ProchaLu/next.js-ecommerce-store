@@ -3,6 +3,7 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Head from 'next/head';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import Layout from '../../components/Layout';
 
 export default function Products(props) {
@@ -50,6 +51,15 @@ export default function Products(props) {
       width: 90%;
     }
   `;
+  const router = useRouter();
+
+  const addToCartHandler = () => {
+    if (props.singleProduct.itemCount < 1) {
+      window.alert('Sorry. Product is out of stock');
+      return;
+    }
+    router.push('/cart');
+  };
 
   return (
     <Layout>
@@ -74,7 +84,7 @@ export default function Products(props) {
             {props.singleProduct.description}
             <p>{props.singleProduct.price}€</p>
 
-            <button>
+            <button onClick={addToCartHandler}>
               ADD TO CART <FontAwesomeIcon icon={faShoppingCart} />
             </button>
           </div>

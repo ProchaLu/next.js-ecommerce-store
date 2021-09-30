@@ -8,7 +8,7 @@ import Layout from '../components/Layout';
 export default function Home(props) {
   const content = css`
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     grid-gap: 2rem;
 
     a {
