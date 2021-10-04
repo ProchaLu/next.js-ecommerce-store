@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Logo from '../public/logo/logo_large.png';
 
-const Header = () => {
+const Header = ({ totalCount }) => {
   const navWrapper = css`
     margin-bottom: 10px;
     display: flex;
@@ -55,8 +55,8 @@ const Header = () => {
         </div>
         <div css={headerCart}>
           <div css={cart}>
-            <span>Items in Cart: 0</span>
-            <Link href="/">
+            <span>Items in Cart: {totalCount}</span>
+            <Link href="/cart">
               <a>
                 <FontAwesomeIcon icon={faShoppingCart} />
               </a>
@@ -66,12 +66,20 @@ const Header = () => {
       </div>
       <div css={navBar}>
         <ul>
-          <li>All Jerseys</li>
+          <Link href="/products/">
+            <a>
+              <li>All Jerseys</li>
+            </a>
+          </Link>
           <li>WM Jerseys</li>
           <li>EM Jerseys</li>
           <li>COPA AMERICA Jerseys</li>
           <li>Retro Jerseys</li>
-          <li>CART</li>
+          <Link href="/cart/">
+            <a>
+              <li>CART</li>
+            </a>
+          </Link>
         </ul>
       </div>
     </div>

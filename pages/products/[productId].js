@@ -4,7 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Head from 'next/head';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 import Layout from '../../components/Layout';
+import { getParsedCookie, setParsedCookie } from '../../util/cookies';
 
 export default function Products(props) {
   const productDetailsWrapper = css`
@@ -53,11 +55,41 @@ export default function Products(props) {
   `;
   const router = useRouter();
 
+  const [cart, setCart] = useState(getParsedCookie('cart') || []);
+
+  const userCookieObject = cart.find(
+    (cookieObj) => cookieObj.id === props.singleProduct.id,
+  );
+
+  const initialItemCount = userCookieObject ? userCookieObject.itemCount : 0;
+
+  const [itemCount, setItemCount] = useState(initialItemCount);
+
   const addToCartHandler = () => {
     if (props.singleProduct.itemCount < 1) {
       window.alert('Sorry. Product is out of stock');
       return;
     }
+    const currentCookie = getParsedCookie('cart') || [];
+
+    const isItemInCart = currentCookie.some((cookieObject) => {
+      return cookieObject.id === props.singleProduct.id; // id that comes from the URL
+    });
+    let newCookie;
+    if (isItemInCart) {
+      newCookie = currentCookie.filter(
+        (cookieObject) => cookieObject.id !== props.singleProduct.id,
+      );
+      setItemCount(0);
+    } else {
+      // add the product
+      newCookie = [
+        ...currentCookie,
+        { id: props.singleProduct.id, itemCount: 1 },
+      ];
+    }
+    setParsedCookie('cart', newCookie);
+    setCart(newCookie);
     router.push('/cart');
   };
 
@@ -71,7 +103,7 @@ export default function Products(props) {
         <div css={productContent}>
           <div css={productContentImage}>
             <Image
-              src={props.singleProduct.image}
+              src={`/../public/images/${props.singleProduct.nationality}.jpeg`}
               width={500}
               height={500}
               alt={props.singleProduct.name}
@@ -95,13 +127,9 @@ export default function Products(props) {
 }
 
 export const getServerSideProps = async (context) => {
-  const { products } = await import('../../util/database');
+  const { getProduct } = await import('../../util/database');
 
-  const idFromUrl = context.query.productId;
-
-  const singleProduct = products.find((product) => {
-    return idFromUrl === product.id;
-  });
+  const singleProduct = await getProduct(context.query.productId);
 
   return {
     props: { singleProduct },

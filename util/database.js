@@ -1,4 +1,57 @@
-export const products = [
+import camelcaseKeys from 'camelcase-keys';
+import dotenvSafe from 'dotenv-safe';
+import postgres from 'postgres';
+
+// Read in the environment variables
+// in the .env file, making it possible
+// to connect to PostgreSQL
+dotenvSafe.config();
+
+// Connect only once to the database
+// https://github.com/vercel/next.js/issues/7811#issuecomment-715259370
+function connectOneTimeToDatabase() {
+  let sql;
+
+  if (process.env.NODE_ENV === 'production') {
+    // Heroku needs SSL connections but
+    // has an "unauthorized" certificate
+    // https://devcenter.heroku.com/changelog-items/852
+    sql = postgres({ ssl: { rejectUnauthorized: false } });
+  } else {
+    if (!globalThis.__postgresSqlClient) {
+      globalThis.__postgresSqlClient = postgres();
+    }
+    sql = globalThis.__postgresSqlClient;
+  }
+
+  return sql;
+}
+
+// Connect to PostgreSQL
+const sql = connectOneTimeToDatabase();
+
+export async function getProducts() {
+  const products = await sql`
+    SELECT * FROM products;
+  `;
+  return products.map((product) => {
+    return camelcaseKeys(product);
+  });
+}
+
+export async function getProduct(id) {
+  const products = await sql`
+    SELECT
+      *
+    FROM
+      products
+    WHERE
+      id = ${id}
+  `;
+  return camelcaseKeys(products[0]);
+}
+
+/* export const products = [
   {
     id: '1',
     name: 'Colombia Home Jersey',
@@ -74,7 +127,7 @@ export const products = [
     description:
       'You may find the simple presentation of the latest Brazil home top a bit plain, but the jersey is a callout to the famous 1970 World Cup winning strip – a time when all jerseys were bold and straightforward, lacking the graphic elements and design flair we see today. Plus, what is a Brazil jersey if not solid yellow flanked by green trim? The graphic design does play in on the sleeve and collar trim, using a tonal triangular patter in tandem with what we see on the away jersey. That 1970 side brought forth a genius that still influences Brazil today, clearly – as the home top has a stylized “70” on the inside neck. Remember the greats, wear a classic, support the Seleção.',
     nationality: 'Brasil',
-    itemCount: 200,
+    itemCount: 0,
   },
   {
     id: '8',
@@ -109,4 +162,4 @@ export const products = [
     nationality: 'Nigeria',
     itemCount: 200,
   },
-];
+]; */
