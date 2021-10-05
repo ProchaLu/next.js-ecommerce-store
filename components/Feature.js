@@ -1,10 +1,10 @@
 import { css } from '@emotion/react';
 import Image from 'next/image';
-import new4 from '../public/images/belgium.jpeg';
-import new3 from '../public/images/brasil.jpeg';
-import new1 from '../public/images/colombia.jpeg';
-import new5 from '../public/images/germany.jpeg';
-import new2 from '../public/images/nigeria.jpeg';
+import new4 from '../public/images/Belgium.jpeg';
+import new3 from '../public/images/Brasil.jpeg';
+import new1 from '../public/images/Colombia.jpeg';
+import new5 from '../public/images/Germany.jpeg';
+import new2 from '../public/images/Nigeria.jpeg';
 
 export default function Feature() {
   const featureWrapper = css`
