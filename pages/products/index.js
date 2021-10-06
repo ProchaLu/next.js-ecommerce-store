@@ -55,7 +55,7 @@ export default function Products(props) {
                       </div>
                     </a>
                   </Link>
-                  <div> Price: {product.price}€</div>
+                  <div> Price: {product.price / 100}€</div>
                   <button>
                     <FontAwesomeIcon icon={faShoppingCart} />
                   </button>

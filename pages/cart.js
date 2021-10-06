@@ -31,6 +31,7 @@ export default function Cart(props) {
     width: 80vw;
     margin-top: 20px;
     margin-bottom: 50px;
+    line-height: 30px;
   `;
 
   const checkoutText = css`
@@ -105,7 +106,9 @@ export default function Cart(props) {
                   </div>
                   <div>
                     <div>Items: {product.itemCount}</div>
-                    <div> Price: {product.itemCount * product.price}€</div>
+                    <div>
+                      Price: {product.itemCount * (product.price / 100)}€
+                    </div>
                   </div>
                 </div>
               );
@@ -136,6 +139,7 @@ export const getServerSideProps = async (context) => {
 
   const cartArray = cookieArray.map((p) => {
     const cartObject = products.find((prod) => prod.id === p.id);
+
     return {
       id: cartObject.id,
       name: cartObject.name,

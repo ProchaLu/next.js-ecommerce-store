@@ -114,7 +114,7 @@ export default function Products(props) {
               {props.singleProduct.name} by {props.singleProduct.brand}
             </h3>
             {props.singleProduct.description}
-            <p>{props.singleProduct.price}€</p>
+            <p>{props.singleProduct.price / 100}€</p>
 
             <button onClick={addToCartHandler}>
               ADD TO CART <FontAwesomeIcon icon={faShoppingCart} />

@@ -1,7 +1,7 @@
 export function calcTotalSum(productsArray) {
   return productsArray
     .reduce((accumulator, product) => {
-      return accumulator + product.price * product.itemCount;
+      return (accumulator + product.price / 100) * product.itemCount;
     }, 0)
     .toFixed(2);
 }
