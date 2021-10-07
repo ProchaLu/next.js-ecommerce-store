@@ -1,4 +1,6 @@
 import { css } from '@emotion/react';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
@@ -10,6 +12,15 @@ export default function Cart(props) {
     width: 80vw;
     padding: 20px;
     line-height: 24px;
+
+    button {
+      float: right;
+      color: #ff4136;
+      font-size: 28px;
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+    }
   `;
   const cartHeader = css`
     margin: auto;
@@ -74,6 +85,8 @@ export default function Cart(props) {
     router.push('/products');
   };
 
+  const onClickClearButton = () => {};
+
   return (
     <Layout>
       {totalCount === 0 ? (
@@ -89,6 +102,9 @@ export default function Cart(props) {
             <div css={cartHeader}>
               <h1>Shopping Cart</h1>
             </div>
+            <button>
+              <FontAwesomeIcon icon={faTrashAlt} onClick={onClickClearButton} />
+            </button>
             {shoppingCart.map((product) => {
               return (
                 <div key={`product-li-${product.id}`} css={cartItemsGrid}>
@@ -116,8 +132,8 @@ export default function Cart(props) {
           </div>
           <div css={cartCheckout}>
             <div css={checkoutText}>
-              <div>TOTAL ITEMS: {totalCount}</div>
-              <div>TOTAL PRICE: {totalSum}€</div>
+              <div>Total Items: {totalCount}</div>
+              <div>Total Price: {totalSum}€</div>
             </div>
             <button onClick={onClickCheckout} css={checkoutButton}>
               CHECKOUT

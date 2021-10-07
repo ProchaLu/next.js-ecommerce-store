@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -57,7 +57,7 @@ export default function Products(props) {
                   </Link>
                   <div> Price: {product.price / 100}€</div>
                   <button>
-                    <FontAwesomeIcon icon={faShoppingCart} />
+                    <FontAwesomeIcon icon={faCartPlus} />
                   </button>
                 </div>
               </div>

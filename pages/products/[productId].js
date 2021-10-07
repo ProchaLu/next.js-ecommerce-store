@@ -1,5 +1,9 @@
 import { css } from '@emotion/react';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import {
+  faMinusCircle,
+  faPlusCircle,
+  faShoppingCart,
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -45,14 +49,27 @@ export default function Products(props) {
       margin: 12px;
       font-size: 40px;
     }
-
-    button {
-      font-size: 24px;
-      cursor: pointer;
-      margin: 12px;
-      width: 90%;
-    }
   `;
+
+  const countButton = css`
+    font-size: 24px;
+    cursor: pointer;
+    margin: 12px;
+    border: none;
+    background-color: transparent;
+  `;
+
+  const cartButton = css`
+    font-size: 24px;
+    cursor: pointer;
+    margin: 12px;
+    width: 90%;
+  `;
+
+  const countDiv = css`
+    font-size: 32px;
+  `;
+
   const router = useRouter();
 
   const [cart, setCart] = useState(getParsedCookie('cart') || []);
@@ -61,10 +78,11 @@ export default function Products(props) {
     (cookieObj) => cookieObj.id === props.singleProduct.id,
   );
 
-  const initialItemCount = userCookieObject ? userCookieObject.itemCount : 0;
+  const initialItemCount = userCookieObject ? userCookieObject.itemCount : 1;
 
   const [itemCount, setItemCount] = useState(initialItemCount);
 
+  // add to cart
   const addToCartHandler = () => {
     if (props.singleProduct.itemCount < 1) {
       window.alert('Sorry. Product is out of stock');
@@ -83,10 +101,7 @@ export default function Products(props) {
       setItemCount(0);
     } else {
       // add the product
-      newCookie = [
-        ...currentCookie,
-        { id: props.singleProduct.id, itemCount: 1 },
-      ];
+      newCookie = [...currentCookie, { id: props.singleProduct.id, itemCount }];
     }
     setParsedCookie('cart', newCookie);
     setCart(newCookie);
@@ -115,8 +130,16 @@ export default function Products(props) {
             </h3>
             {props.singleProduct.description}
             <p>{props.singleProduct.price / 100}€</p>
-
-            <button onClick={addToCartHandler}>
+            <div css={countDiv}>
+              <button css={countButton}>
+                <FontAwesomeIcon icon={faMinusCircle} />
+              </button>
+              {itemCount}
+              <button css={countButton}>
+                <FontAwesomeIcon icon={faPlusCircle} />
+              </button>
+            </div>
+            <button css={cartButton} onClick={addToCartHandler}>
               ADD TO CART <FontAwesomeIcon icon={faShoppingCart} />
             </button>
           </div>

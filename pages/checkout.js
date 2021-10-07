@@ -12,7 +12,7 @@ export default function Checkout(props) {
     display: grid;
     grid-template-columns: 3fr 2fr;
     margin-top: 50px;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
     width: 90vw;
     align-items: center;
   `;
@@ -29,6 +29,25 @@ export default function Checkout(props) {
     align-items: flex-start;
   `;
 
+  const paymentDiv = css`
+    position: relative;
+    align-items: center;
+    text-align: center;
+  `;
+
+  const paymentButton = css`
+    font-size: 24px;
+    cursor: pointer;
+    width: 90vw;
+    margin-bottom: 50px;
+  `;
+
+  const totalCart = css`
+    font-size: 32px;
+    line-height: 50px;
+    font-weight: bold;
+  `;
+
   const router = useRouter();
 
   const totalSum = calcTotalSum(finalCartArray);
@@ -40,7 +59,62 @@ export default function Checkout(props) {
   return (
     <Layout>
       <div css={checkoutWrapper}>
-        <div>NAME AND SO</div>
+        <div>
+          <div>
+            <h2>Contact Info</h2>
+            <div>
+              Frist Name
+              <input />
+              Last Name
+              <input />
+            </div>
+            <div>
+              Mail <input />
+            </div>
+            <div>
+              Phone Number
+              <input />
+            </div>
+            <hr />
+          </div>
+          <div>
+            <h2>Shipping Info</h2>
+            <div>
+              Address
+              <input />
+            </div>
+            <div>
+              ZIP Code
+              <input />
+            </div>
+            <div>
+              City
+              <input />
+            </div>
+            <div>
+              Country
+              <input />
+            </div>
+          </div>
+          <hr />
+          <div>
+            <h2>Credit Card Info</h2>
+            <div>
+              Holder
+              <input />
+            </div>
+            <div>
+              Number
+              <input />
+            </div>
+            <div>
+              Expire Date
+              <input />
+              CVV
+              <input />
+            </div>
+          </div>
+        </div>
         <div>
           {finalCartArray.map((product) => {
             return (
@@ -65,14 +139,17 @@ export default function Checkout(props) {
               </div>
             );
           })}
+          <hr />
+          <div css={totalCart}>
+            <div>Total Items: {totalCount}</div>
+            <div>Total Price: {totalSum}€</div>
+          </div>
         </div>
       </div>
-      <div>
-        <div>
-          <div>TOTAL ITEMS: {totalCount}</div>
-          <div>TOTAL PRICE: {totalSum}€</div>
-        </div>
-        <button onClick={onClickBuy}>PAY {totalSum}€</button>
+      <div css={paymentDiv}>
+        <button css={paymentButton} onClick={onClickBuy}>
+          Pay {totalSum}€
+        </button>
       </div>
     </Layout>
   );
