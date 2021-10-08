@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useState } from 'react';
 
 const searchWrapper = css`
   display: flex;
@@ -53,11 +54,17 @@ const faStyle = css`
 `;
 
 const SearchBar = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+
   return (
     <div css={searchWrapper}>
       <div css={searchContent}>
         <FontAwesomeIcon css={faStyle} icon={faSearch} />
-        <input placeholder="Search" />
+        <input
+          placeholder="Search..."
+          value={searchTerm}
+          onChange={(event) => setSearchTerm(event.currentTarget.value)}
+        />
       </div>
     </div>
   );

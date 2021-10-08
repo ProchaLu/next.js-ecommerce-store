@@ -1,10 +1,11 @@
 import { css } from '@emotion/react';
-import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faTimes, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import Layout from '../components/Layout';
+import { setParsedCookie } from '../util/cookies';
 import { calcTotalCount, calcTotalSum } from '../util/functions';
 
 export default function Cart(props) {
@@ -12,6 +13,12 @@ export default function Cart(props) {
     width: 80vw;
     padding: 20px;
     line-height: 24px;
+  `;
+  const cartHeader = css`
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
 
     button {
       float: right;
@@ -22,15 +29,9 @@ export default function Cart(props) {
       cursor: pointer;
     }
   `;
-  const cartHeader = css`
-    margin: auto;
-    display: flex;
-    align-items: center;
-    padding: 10px;
-  `;
   const cartItemsGrid = css`
     display: grid;
-    grid-template-columns: 1fr 3fr 3fr;
+    grid-template-columns: 2fr 6fr 6fr 1fr;
     border-bottom: 1px solid black;
     padding: 10px;
     align-items: center;
@@ -70,6 +71,12 @@ export default function Cart(props) {
     margin: 12px;
   `;
 
+  const deleteButton = css`
+    font-size: 24px;
+    color: #ff4136;
+    cursor: pointer;
+  `;
+
   const [shoppingCart, setShoppingCart] = useState(props.cartArray);
 
   const router = useRouter();
@@ -85,7 +92,22 @@ export default function Cart(props) {
     router.push('/products');
   };
 
-  const onClickClearButton = () => {};
+  const onClickClearButton = () => {
+    setParsedCookie('cart', []);
+    setShoppingCart([]);
+    router.push('/');
+  };
+
+  /*   const onClickDeleteButton = (id) => {
+    const deletedCookie = shoppingCart.filter((p) => {
+      return p.id !== id;
+    });
+    if (deletedCookie !== null) {
+      setParsedCookie('cart', deletedCookie);
+    } else {
+      setParsedCookie('cart', []);
+    }
+  }; */
 
   return (
     <Layout>
@@ -98,13 +120,14 @@ export default function Cart(props) {
         </div>
       ) : (
         <>
-          <div css={cartWrapper}>
-            <div css={cartHeader}>
-              <h1>Shopping Cart</h1>
-            </div>
+          {' '}
+          <div css={cartHeader}>
+            <h1>Shopping Cart</h1>
             <button>
               <FontAwesomeIcon icon={faTrashAlt} onClick={onClickClearButton} />
-            </button>
+            </button>{' '}
+          </div>
+          <div css={cartWrapper}>
             {shoppingCart.map((product) => {
               return (
                 <div key={`product-li-${product.id}`} css={cartItemsGrid}>
@@ -125,6 +148,13 @@ export default function Cart(props) {
                     <div>
                       Price: {product.itemCount * (product.price / 100)}€
                     </div>
+                  </div>
+                  <div>
+                    <FontAwesomeIcon
+                      icon={faTimes}
+                      css={deleteButton}
+                      /*  onClick={onClickDeleteButton} */
+                    />
                   </div>
                 </div>
               );

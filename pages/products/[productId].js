@@ -10,7 +10,12 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import Layout from '../../components/Layout';
-import { getParsedCookie, setParsedCookie } from '../../util/cookies';
+import {
+  findProductAndAddItemCount,
+  findProductAndRemoveItemCount,
+  getParsedCookie,
+  setParsedCookie,
+} from '../../util/cookies';
 
 export default function Products(props) {
   const productDetailsWrapper = css`
@@ -84,7 +89,7 @@ export default function Products(props) {
 
   // add to cart
   const addToCartHandler = () => {
-    if (props.singleProduct.itemCount < 1) {
+    if (props.singleProduct.itemStock < 1) {
       window.alert('Sorry. Product is out of stock');
       return;
     }
@@ -96,16 +101,54 @@ export default function Products(props) {
     let newCookie;
     if (isItemInCart) {
       newCookie = currentCookie.filter(
-        (cookieObject) => cookieObject.id !== props.singleProduct.id,
+        (cookieObject) => cookieObject.itemCount + 1,
       );
-      setItemCount(0);
+      /*  setItemCount(1); */
     } else {
-      // add the product
+      // add the new product
       newCookie = [...currentCookie, { id: props.singleProduct.id, itemCount }];
     }
     setParsedCookie('cart', newCookie);
     setCart(newCookie);
     router.push('/cart');
+  };
+
+  // add items
+
+  const plusItemHandler = () => {
+    const currentCookie = getParsedCookie('cart') || [];
+
+    const updatedItem = findProductAndAddItemCount(
+      currentCookie,
+      props.singleProduct.id,
+    );
+
+    setParsedCookie('cart', currentCookie);
+    setItemCount(updatedItem.itemCount);
+  };
+
+  // remove items
+
+  const minusItemHandler = () => {
+    const minValue = 1;
+    const currentCookie = getParsedCookie('cart') || [];
+
+    const isItemInCart = currentCookie.find((cookieObject) => {
+      return cookieObject.id === props.singleProduct.id;
+    });
+
+    if (isItemInCart) {
+      if (isItemInCart.itemCount === minValue) {
+        return setItemCount(minValue);
+      } else {
+        const updatedItem = findProductAndRemoveItemCount(
+          currentCookie,
+          props.singleProduct.id,
+        );
+        setParsedCookie('cart', currentCookie);
+        setItemCount(updatedItem.itemCount);
+      }
+    }
   };
 
   return (
@@ -131,11 +174,11 @@ export default function Products(props) {
             {props.singleProduct.description}
             <p>{props.singleProduct.price / 100}€</p>
             <div css={countDiv}>
-              <button css={countButton}>
+              <button css={countButton} onClick={minusItemHandler}>
                 <FontAwesomeIcon icon={faMinusCircle} />
               </button>
               {itemCount}
-              <button css={countButton}>
+              <button css={countButton} onClick={plusItemHandler}>
                 <FontAwesomeIcon icon={faPlusCircle} />
               </button>
             </div>

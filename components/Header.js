@@ -29,6 +29,8 @@ const Header = ({ totalCount }) => {
 
   const navBar = css`
     text-transform: uppercase;
+    font-size: 20px;
+    color: #0074d9;
 
     ul {
       display: flex;
@@ -40,8 +42,16 @@ const Header = ({ totalCount }) => {
       display: inline-block;
       text-align: center;
       padding: 10px;
+      color: #0074d9;
+
+      &:hover {
+        background-color: #0074d9;
+        border-radius: 10px;
+        color: #fff;
+      }
     }
   `;
+  console.log();
 
   return (
     <div>

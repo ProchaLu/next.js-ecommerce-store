@@ -9,7 +9,7 @@ exports.up = async function up(sql) {
   price INTEGER NOT NULL,
   description VARCHAR(700),
   nationality VARCHAR(40) NOT NULL,
-  item_count INTEGER NOT NULL
+  item_stock INTEGER NOT NULL
 );
 	`;
 };

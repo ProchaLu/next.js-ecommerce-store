@@ -48,6 +48,28 @@ export default function Checkout(props) {
     font-weight: bold;
   `;
 
+  const contactDiv = css`
+    display: inline-block;
+    width: 100%;
+  `;
+
+  const inputDiv = css`
+    font-size: 20px;
+
+    h2 {
+      margin-top: 12px;
+      margin-bottom: 12px;
+    }
+
+    input {
+      width: 90%;
+      margin: 8px;
+      height: 32px;
+      font-size: 16px;
+      border-radius: 1px;
+    }
+  `;
+
   const router = useRouter();
 
   const totalSum = calcTotalSum(finalCartArray);
@@ -59,60 +81,53 @@ export default function Checkout(props) {
   return (
     <Layout>
       <div css={checkoutWrapper}>
-        <div>
-          <div>
+        <div css={contactDiv}>
+          <div css={inputDiv}>
             <h2>Contact Info</h2>
-            <div>
-              Frist Name
-              <input />
-              Last Name
-              <input />
-            </div>
-            <div>
-              Mail <input />
-            </div>
-            <div>
-              Phone Number
-              <input />
-            </div>
+            <div>First Name</div>
+            <input id="firstname" placeholder="Max" />
+            <div>Last Name</div>
+            <input id="lastname" placeholder="Mustermann" />
+            <div>Mail</div>
+            <input
+              type="mail"
+              id="mail"
+              placeholder="max.mustermann@mail.com"
+            />
+            <div>Phone Number</div>
+            <input
+              type="number"
+              id="phonenumber"
+              placeholder="0676 123 45 67"
+            />
             <hr />
           </div>
-          <div>
+          <div css={inputDiv}>
             <h2>Shipping Info</h2>
-            <div>
-              Address
-              <input />
-            </div>
-            <div>
-              ZIP Code
-              <input />
-            </div>
-            <div>
-              City
-              <input />
-            </div>
-            <div>
-              Country
-              <input />
-            </div>
+            <div>Address</div>
+            <input id="address" placeholder="Street 1/1" />
+            <div>Zip Code</div>
+            <input type="number" id="zipcode" placeholder="1010" />
+            <div>City</div>
+            <input id="city" placeholder="Vienna" />
+            <div>Country</div>
+            <input id="state" placeholder="Austria" />
           </div>
           <hr />
-          <div>
+          <div css={inputDiv}>
             <h2>Credit Card Info</h2>
-            <div>
-              Holder
-              <input />
-            </div>
-            <div>
-              Number
-              <input />
-            </div>
-            <div>
-              Expire Date
-              <input />
-              CVV
-              <input />
-            </div>
+            <div>Credit Card Holder</div>
+            <input id="creditcardholder" placeholder="Max Mustermann" />
+            <div>Number</div>
+            <input
+              type="number"
+              id="creditcardnumber"
+              placeholder="4024007103939509"
+            />
+            <div>Expire Date</div>
+            <input id="expirydate" placeholder="MM/YY" />
+            <div>CCV</div>
+            <input type="text" id="cvv" placeholder="123" />
           </div>
         </div>
         <div>
