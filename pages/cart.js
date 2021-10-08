@@ -1,5 +1,10 @@
 import { css } from '@emotion/react';
-import { faTimes, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import {
+  faMinusCircle,
+  faPlusCircle,
+  faTimes,
+  faTrashAlt,
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
@@ -13,6 +18,7 @@ export default function Cart(props) {
     width: 80vw;
     padding: 20px;
     line-height: 24px;
+    text-align: center;
   `;
   const cartHeader = css`
     margin-top: 40px;
@@ -75,6 +81,19 @@ export default function Cart(props) {
     font-size: 24px;
     color: #ff4136;
     cursor: pointer;
+  `;
+
+  const countButton = css`
+    font-size: 24px;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    margin-left: 8px;
+    margin-right: 8px;
+  `;
+
+  const itemCountStyle = css`
+    display: flex;
   `;
 
   const [shoppingCart, setShoppingCart] = useState(props.cartArray);
@@ -144,7 +163,15 @@ export default function Cart(props) {
                     <p>by {product.brand}</p>
                   </div>
                   <div>
-                    <div>Items: {product.itemCount}</div>
+                    <div css={itemCountStyle}>
+                      <button css={countButton}>
+                        <FontAwesomeIcon icon={faMinusCircle} />
+                      </button>
+                      <div>Items: {product.itemCount}</div>
+                      <button css={countButton}>
+                        <FontAwesomeIcon icon={faPlusCircle} />
+                      </button>
+                    </div>
                     <div>
                       Price: {product.itemCount * (product.price / 100)}€
                     </div>
