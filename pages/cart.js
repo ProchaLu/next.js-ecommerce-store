@@ -124,8 +124,6 @@ export default function Cart(props) {
     setShoppingCart(newCookieValue);
   };
 
-  console.log(props.cookieArray);
-
   return (
     <Layout>
       {totalCount === 0 ? (
