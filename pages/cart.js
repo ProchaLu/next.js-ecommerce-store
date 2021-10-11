@@ -117,16 +117,14 @@ export default function Cart(props) {
     router.push('/');
   };
 
-  /*   const onClickDeleteButton = (id) => {
-    const deletedCookie = shoppingCart.filter((p) => {
-      return p.id !== id;
-    });
-    if (deletedCookie !== null) {
-      setParsedCookie('cart', deletedCookie);
-    } else {
-      setParsedCookie('cart', []);
-    }
-  }; */
+  const onClickDeleteButton = (id) => {
+    const cookieValue = [...props.cookieArray];
+    const newCookieValue = cookieValue.filter((p) => p.id !== id);
+    setParsedCookie('cart', newCookieValue);
+    setShoppingCart(newCookieValue);
+  };
+
+  console.log(props.cookieArray);
 
   return (
     <Layout>
@@ -139,12 +137,11 @@ export default function Cart(props) {
         </div>
       ) : (
         <>
-          {' '}
           <div css={cartHeader}>
             <h1>Shopping Cart</h1>
             <button>
               <FontAwesomeIcon icon={faTrashAlt} onClick={onClickClearButton} />
-            </button>{' '}
+            </button>
           </div>
           <div css={cartWrapper}>
             {shoppingCart.map((product) => {
@@ -180,7 +177,7 @@ export default function Cart(props) {
                     <FontAwesomeIcon
                       icon={faTimes}
                       css={deleteButton}
-                      /*  onClick={onClickDeleteButton} */
+                      onClick={() => onClickDeleteButton(product.id)}
                     />
                   </div>
                 </div>
@@ -224,6 +221,6 @@ export const getServerSideProps = async (context) => {
   });
 
   return {
-    props: { products, cartArray },
+    props: { products, cartArray, cookieArray },
   };
 };

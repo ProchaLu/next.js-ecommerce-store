@@ -89,7 +89,7 @@ export default function Products(props) {
 
   // add to cart
   const addToCartHandler = () => {
-    if (props.singleProduct.itemStock < 1) {
+    if (props.singleProduct.itemStock < itemCount) {
       window.alert('Sorry. Product is out of stock');
       return;
     }
@@ -103,7 +103,6 @@ export default function Products(props) {
       newCookie = currentCookie.filter(
         (cookieObject) => cookieObject.itemCount + 1,
       );
-      /*  setItemCount(1); */
     } else {
       // add the new product
       newCookie = [...currentCookie, { id: props.singleProduct.id, itemCount }];

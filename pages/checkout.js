@@ -6,8 +6,6 @@ import Layout from '../components/Layout';
 import { calcTotalCount, calcTotalSum } from '../util/functions';
 
 export default function Checkout(props) {
-  const [finalCartArray] = useState(props.cartArray);
-
   const checkoutWrapper = css`
     display: grid;
     grid-template-columns: 3fr 2fr;
@@ -66,11 +64,12 @@ export default function Checkout(props) {
       margin: 8px;
       height: 32px;
       font-size: 16px;
-      border-radius: 1px;
     }
   `;
 
   const router = useRouter();
+
+  const [finalCartArray] = useState(props.cartArray);
 
   const totalSum = calcTotalSum(finalCartArray);
   const totalCount = calcTotalCount(finalCartArray);
@@ -78,6 +77,7 @@ export default function Checkout(props) {
   const onClickBuy = () => {
     router.push('/thankyou');
   };
+
   return (
     <Layout>
       <div css={checkoutWrapper}>
@@ -127,7 +127,7 @@ export default function Checkout(props) {
             <div>Expire Date</div>
             <input id="expirydate" placeholder="MM/YY" />
             <div>CCV</div>
-            <input type="text" id="cvv" placeholder="123" />
+            <input id="cvv" placeholder="123" />
           </div>
         </div>
         <div>
