@@ -10,7 +10,7 @@ import {
 } from '../util/cookies';
 
 function MyApp({ Component, pageProps }) {
-  const [shoppingCart, setShoppingCart] = useState([]);
+  // const [shoppingCart, setShoppingCart] = useState([]);
 
   // Updating the state variable after the page loads, so that we don't run into server-side-rendering inconsistencies
 
