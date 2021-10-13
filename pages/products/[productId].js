@@ -159,7 +159,11 @@ export default function Products(props) {
                 <FontAwesomeIcon icon={faPlusCircle} />
               </button>
             </div>
-            <button css={cartButton} onClick={addToCartHandler}>
+            <button
+              data-cy="item-inCart"
+              css={cartButton}
+              onClick={addToCartHandler}
+            >
               ADD TO CART <FontAwesomeIcon icon={faShoppingCart} />
             </button>
           </div>

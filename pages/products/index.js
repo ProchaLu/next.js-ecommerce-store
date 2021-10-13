@@ -65,7 +65,7 @@ export default function Products(props) {
               <div key={`product-li-${product.id}`}>
                 <div>
                   <Link href={`/products/${product.id}`}>
-                    <a>
+                    <a data-cy="singleProduct-Link">
                       <h3>{product.name}</h3>
                       <div>
                         <Image

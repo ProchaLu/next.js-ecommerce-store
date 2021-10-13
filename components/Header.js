@@ -57,7 +57,7 @@ const Header = ({ shoppingCart }) => {
       <div css={navWrapper}>
         <div css={headerLogo}>
           <Link href="/">
-            <a>
+            <a data-cy="header-landingPage-link">
               <Image src={Logo} alt="Logo" />
             </a>
           </Link>
@@ -76,7 +76,7 @@ const Header = ({ shoppingCart }) => {
       <div css={navBar}>
         <ul>
           <Link href="/products/">
-            <a>
+            <a data-cy="header-allProducts-link">
               <li>All Jerseys</li>
             </a>
           </Link>
@@ -85,7 +85,7 @@ const Header = ({ shoppingCart }) => {
           <li>COPA AMERICA Jerseys</li>
           <li>Retro Jerseys</li>
           <Link href="/cart/">
-            <a>
+            <a data-cy="header-cart-link">
               <li>CART</li>
             </a>
           </Link>

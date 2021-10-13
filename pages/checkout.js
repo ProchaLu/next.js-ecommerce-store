@@ -203,7 +203,7 @@ export default function Checkout(props) {
       setErrors(newErrors);
     } else {
       // No errors! Put any logic here for the form submission!
-      router.push('/thankyou');
+      router.push('/thankyou/');
       setParsedCookie('cart', []);
     }
   };
@@ -219,6 +219,7 @@ export default function Checkout(props) {
               First Name <span css={divError}>{errors.firstname}</span>
             </div>
             <input
+              data-cy="first-name"
               id="firstname"
               placeholder="Max"
               onChange={(e) => setField('firstname', e.target.value)}
@@ -229,6 +230,7 @@ export default function Checkout(props) {
               Last Name <span css={divError}>{errors.lastname}</span>
             </div>
             <input
+              data-cy="last-name"
               id="lastname"
               placeholder="Mustermann"
               onChange={(e) => setField('lastname', e.target.value)}
@@ -239,6 +241,7 @@ export default function Checkout(props) {
               Mail <span css={divError}>{errors.mail}</span>
             </div>
             <input
+              data-cy="mail"
               type="mail"
               id="mail"
               placeholder="max.mustermann@mail.com"
@@ -250,6 +253,7 @@ export default function Checkout(props) {
               Phone Number <span css={smallInfo}>(Optional)</span>
             </div>
             <input
+              data-cy="phone-number"
               type="number"
               id="phonenumber"
               placeholder="0676 123 45 67"
@@ -263,6 +267,7 @@ export default function Checkout(props) {
               Address <span css={divError}>{errors.address}</span>
             </div>
             <input
+              data-cy="address"
               id="address"
               placeholder="Street 1"
               onChange={(e) => setField('address', e.target.value)}
@@ -273,6 +278,7 @@ export default function Checkout(props) {
               Zip Code <span css={divError}>{errors.zip}</span>
             </div>
             <input
+              data-cy="zipcode"
               type="number"
               id="zipcode"
               placeholder="1010"
@@ -284,6 +290,7 @@ export default function Checkout(props) {
               City <span css={divError}>{errors.city}</span>
             </div>
             <input
+              data-cy="city"
               id="city"
               placeholder="Vienna"
               onChange={(e) => setField('city', e.target.value)}
@@ -294,6 +301,7 @@ export default function Checkout(props) {
               Country <span css={divError}>{errors.country}</span>
             </div>
             <input
+              data-cy="state"
               id="state"
               placeholder="Austria"
               onChange={(e) => setField('country', e.target.value)}
@@ -309,6 +317,7 @@ export default function Checkout(props) {
               <span css={divError}>{errors.creditcardholder}</span>
             </div>
             <input
+              data-cy="creditcardholder"
               id="creditcardholder"
               placeholder="Max Mustermann"
               onChange={(e) => setField('creditcardholder', e.target.value)}
@@ -319,6 +328,7 @@ export default function Checkout(props) {
               Number <span css={divError}>{errors.creditcardnumber}</span>
             </div>
             <input
+              data-cy="creditcardnumber"
               type="number"
               id="creditcardnumber"
               placeholder="4024007103939509"
@@ -331,6 +341,7 @@ export default function Checkout(props) {
               <span css={divError}>{errors.creditcardexpirydate}</span>
             </div>
             <input
+              data-cy="creditcardexpirydate"
               id="creditcardexpirydate"
               placeholder="MM/YY"
               onChange={(e) => setField('creditcardexpirydate', e.target.value)}
@@ -341,6 +352,7 @@ export default function Checkout(props) {
               CCV <span css={divError}>{errors.creditcardcvv}</span>
             </div>
             <input
+              data-cy="ccv"
               id="cvv"
               placeholder="123"
               onChange={(e) => setField('creditcardcvv', e.target.value)}
@@ -380,7 +392,11 @@ export default function Checkout(props) {
         </div>
       </div>
       <div css={paymentDiv}>
-        <button css={paymentButton} onClick={(e) => handleSubmit(e)}>
+        <button
+          data-cy="payment"
+          css={paymentButton}
+          onClick={(e) => handleSubmit(e)}
+        >
           Pay {totalSum}€
         </button>
       </div>

@@ -141,7 +141,7 @@ export default function Cart(props) {
         <>
           <div css={cartHeader}>
             <h1>Shopping Cart</h1>
-            <button>
+            <button data-cy="deleteAll-in-Cart">
               <FontAwesomeIcon icon={faTrashAlt} onClick={onClickClearButton} />
             </button>
           </div>
@@ -163,7 +163,10 @@ export default function Cart(props) {
                   </div>
                   <div>
                     <div css={itemCountStyle}>
-                      <button css={countButton}>
+                      <button
+                        data-cy="minus-quantity-in-cart"
+                        css={countButton}
+                      >
                         <FontAwesomeIcon
                           icon={faMinusCircle}
                           onClick={() => {
@@ -175,7 +178,7 @@ export default function Cart(props) {
                         />
                       </button>
                       <div>Items: {product.itemCount}</div>
-                      <button css={countButton}>
+                      <button data-cy="plus-quantity-in-cart" css={countButton}>
                         <FontAwesomeIcon
                           icon={faPlusCircle}
                           onClick={() => {
@@ -204,7 +207,11 @@ export default function Cart(props) {
               <div>Total Items: {totalCount}</div>
               <div>Total Price: {totalSum}€</div>
             </div>
-            <button onClick={onClickCheckout} css={checkoutButton}>
+            <button
+              data-cy="item-toCheckout"
+              onClick={onClickCheckout}
+              css={checkoutButton}
+            >
               CHECKOUT
             </button>
           </div>
