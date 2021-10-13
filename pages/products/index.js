@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
 import Link from 'next/link';
 import Layout from '../../components/Layout';
+import { getParsedCookie, setParsedCookie } from '../../util/cookies';
 
 export default function Products(props) {
   const content = css`
@@ -34,6 +35,27 @@ export default function Products(props) {
     text-align: center;
   `;
 
+  const addToCartHandler = (id) => {
+    if (props.products.itemStock < 1) {
+      window.alert('Sorry. Product is out of stock');
+      return;
+    }
+    const currentCookie = getParsedCookie('cart') || [];
+
+    const isItemInCart = currentCookie.some((cookieObject) => {
+      return cookieObject.id === id; // id that comes from the URL
+    });
+    let newCookie;
+    if (isItemInCart) {
+      newCookie = currentCookie.filter(
+        (cookieObject) => cookieObject.itemCount + 1,
+      );
+    } else {
+      // add the new product
+      newCookie = [...currentCookie, { id: id, itemCount: 1 }];
+    }
+    setParsedCookie('cart', newCookie);
+  };
   return (
     <Layout>
       <div css={contentWrapper}>
@@ -56,7 +78,7 @@ export default function Products(props) {
                     </a>
                   </Link>
                   <div> Price: {product.price / 100}€</div>
-                  <button>
+                  <button onClick={() => addToCartHandler(product.id)}>
                     <FontAwesomeIcon icon={faCartPlus} />
                   </button>
                 </div>

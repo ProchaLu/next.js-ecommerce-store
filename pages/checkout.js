@@ -79,7 +79,7 @@ const smallInfo = css`
 export default function Checkout(props) {
   const router = useRouter();
 
-  const [finalCartArray] = useState(props.cartArray);
+  const [finalCartArray, setFinalCartArray] = useState(props.cartArray);
   const [form, setForm] = useState({});
   const [errors, setErrors] = useState({});
   const setField = (field, value) => {
@@ -187,6 +187,11 @@ export default function Checkout(props) {
 
   const totalSum = calcTotalSum(finalCartArray);
   const totalCount = calcTotalCount(finalCartArray);
+
+  if (totalCount < 0) {
+    setFinalCartArray([]);
+    setParsedCookie('cart', []);
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();

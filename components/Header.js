@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Logo from '../public/logo/logo_large.png';
 
-const Header = ({ totalCount }) => {
+const Header = ({ shoppingCart }) => {
   const navWrapper = css`
     margin-bottom: 10px;
     display: flex;
@@ -51,7 +51,6 @@ const Header = ({ totalCount }) => {
       }
     }
   `;
-  console.log();
 
   return (
     <div>
@@ -65,8 +64,8 @@ const Header = ({ totalCount }) => {
         </div>
         <div css={headerCart}>
           <div css={cart}>
-            <span>Items in Cart: {totalCount}</span>
-            <Link href="/cart">
+            <span>Items in Cart: {shoppingCart}</span>
+            <Link href="/cart/">
               <a>
                 <FontAwesomeIcon icon={faShoppingCart} />
               </a>
