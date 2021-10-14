@@ -16,6 +16,10 @@ describe('add 1 item to cart and checkout to thank you page', () => {
     cy.wait(1000);
     cy.contains('Colombia Home Jersey').should('be.visible');
     cy.get('[data-cy="move-to-Checkout"]').click();
+    // press pay
+    cy.wait(1000);
+    cy.get('[data-cy="payment"]').should('be.visible').click();
+    cy.contains('please enter your first name!').should('be.visible');
     // enter all forms from checkout page
     cy.wait(1000);
     cy.contains('First Name').should('be.visible');
@@ -33,6 +37,7 @@ describe('add 1 item to cart and checkout to thank you page', () => {
     // press pay
     cy.get('[data-cy="payment"]').should('be.visible').click();
     // thank you visible
+    cy.wait(1000);
     cy.contains('THANKS FOR YOUR ORDER').should('be.visible');
   });
 });
