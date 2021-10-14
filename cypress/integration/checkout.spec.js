@@ -5,8 +5,6 @@ describe('add 1 item to cart and checkout to thank you page', () => {
     cy.get('[data-cy="header-allProducts-link"]').should('be.visible').click();
     // get to the first single product item
     cy.contains('Colombia Home Jersey').should('be.visible').click();
-    // add to Cart visible
-    cy.contains('ADD TO CART').should('be.visible');
     // put first item in cart
     cy.get('[data-cy="item-inCart"]').should('be.visible').click();
     // checkout visible
