@@ -4,10 +4,13 @@ describe('add 1 item to cart and checkout to thank you page', () => {
     // get to products page
     cy.get('[data-cy="header-allProducts-link"]').should('be.visible').click();
     // get to the first single product item
+    cy.contains('Nigeria Away Jersey').should('be.visible');
     cy.contains('Colombia Home Jersey').should('be.visible').click();
     // put first item in cart
+    cy.contains('Colombia Home Jersey').should('be.visible');
     cy.get('[data-cy="item-inCart"]').should('be.visible').click();
     // checkout page
+    cy.contains('Shopping Cart').should('be.visible');
     cy.get('[data-cy="item-toCheckout"]').should('be.visible').click();
     // enter all forms from checkout page
     cy.contains('First Name').should('be.visible');
