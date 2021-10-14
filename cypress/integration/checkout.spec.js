@@ -13,7 +13,7 @@ describe('add 1 item to cart and checkout to thank you page', () => {
     // checkout page
     cy.wait(500);
     cy.contains('Colombia Home Jersey').should('be.visible');
-    cy.get('[data-cy="item-toCheckout"]').should('be.visible').click();
+    cy.get('[data-cy="move-to-Checkout"]').should('be.visible').click();
     // enter all forms from checkout page
     cy.wait(500);
     cy.contains('First Name').should('be.visible');

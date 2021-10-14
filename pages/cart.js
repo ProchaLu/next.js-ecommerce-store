@@ -208,7 +208,7 @@ export default function Cart(props) {
               <div>Total Price: {totalSum}€</div>
             </div>
             <button
-              data-cy="item-toCheckout"
+              data-cy="move-to-Checkout"
               onClick={onClickCheckout}
               css={checkoutButton}
             >
