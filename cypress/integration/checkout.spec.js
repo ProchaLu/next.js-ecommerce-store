@@ -7,13 +7,7 @@ describe('add 1 item to cart and checkout to thank you page', () => {
     cy.contains('Colombia Home Jersey').should('be.visible').click();
     // put first item in cart
     cy.get('[data-cy="item-inCart"]').should('be.visible').click();
-    // checkout visible
-    cy.contains('CHECKOUT').should('be.visible');
-    // check total Items
-    cy.contains('Total Items: 1').should('be.visible');
-    // check total amount
-    cy.contains('Total Price: 90.00€').should('be.visible');
-    // go to checkout
+    // checkout page
     cy.get('[data-cy="item-toCheckout"]').should('be.visible').click();
     // enter all forms from checkout page
     cy.contains('First Name').should('be.visible');
