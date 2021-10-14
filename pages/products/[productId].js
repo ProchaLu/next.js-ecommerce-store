@@ -160,7 +160,7 @@ export default function Products(props) {
               </button>
             </div>
             <button
-              data-cy="item-inCart"
+              data-cy="add-to-Cart"
               css={cartButton}
               onClick={addToCartHandler}
             >

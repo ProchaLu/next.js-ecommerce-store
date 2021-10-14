@@ -11,7 +11,7 @@ describe('add and remove quantity from cart and delete the cart', () => {
     // add to Cart visible
     cy.contains('ADD TO CART').should('be.visible');
     // put first item in cart
-    cy.get('[data-cy="item-inCart"]').should('be.visible').click();
+    cy.get('[data-cy="add-to-Cart"]').should('be.visible').click();
     // go back to all products
     cy.get('[data-cy="header-allProducts-link"]').should('be.visible').click();
     // get to the last single product item
@@ -19,7 +19,7 @@ describe('add and remove quantity from cart and delete the cart', () => {
     // add to Cart visible
     cy.contains('ADD TO CART').should('be.visible');
     // put last item in cart
-    cy.get('[data-cy="item-inCart"]').should('be.visible').click();
+    cy.get('[data-cy="add-to-Cart"]').should('be.visible').click();
     // press + 2 times first item
     cy.get('[data-cy="plus-quantity-in-cart"')
       .should('be.visible')
