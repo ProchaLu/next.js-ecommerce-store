@@ -3,22 +3,22 @@ describe('add 1 item to cart and checkout to thank you page', () => {
     cy.visit('http://localhost:3000');
     // get to products page
     cy.wait(1000);
-    cy.get('[data-cy="header-allProducts-link"]').should('be.visible').click();
+    cy.get('[data-cy="header-allProducts-link"]').should('exist').click();
     // get to the first single product item
     cy.wait(1000);
-    cy.contains('Nigeria Away Jersey').should('be.visible');
-    cy.contains('Colombia Home Jersey').should('be.visible').click();
+    cy.contains('Nigeria Away Jersey').should('exist');
+    cy.contains('Colombia Home Jersey').should('exist').click();
     // put first item in cart
     cy.wait(1000);
-    cy.contains('Colombia Home Jersey').should('be.visible');
-    cy.get('[data-cy="add-to-Cart"]').should('be.visible').click();
+    cy.contains('Colombia Home Jersey').should('exist');
+    cy.get('[data-cy="add-to-Cart"]').should('exist').click();
     // checkout page
     cy.wait(1000);
-    cy.contains('Colombia Home Jersey').should('be.visible');
+    cy.contains('Colombia Home Jersey').should('exist');
     cy.get('[data-cy="move-to-Checkout"]').click();
     // enter all forms from checkout page
     cy.wait(1000);
-    cy.contains('First Name').should('be.visible');
+    cy.contains('First Name').should('exist');
     cy.get('[data-cy="first-name"]').type('Max');
     cy.get('[data-cy="last-name"]').type('Mustermann');
     cy.get('[data-cy="mail"]').type('max@mustermann.at');
@@ -31,8 +31,8 @@ describe('add 1 item to cart and checkout to thank you page', () => {
     cy.get('[data-cy="creditcardexpirydate"]').type('01/23');
     cy.get('[data-cy="ccv"]').type('123');
     // press pay
-    cy.get('[data-cy="payment"]').should('be.visible').click();
+    cy.get('[data-cy="payment"]').should('exist').click();
     // thank you visible
-    cy.contains('THANKS FOR YOUR ORDER').should('be.visible');
+    cy.contains('THANKS FOR YOUR ORDER').should('exist');
   });
 });
