@@ -69,7 +69,7 @@ export default function Products(props) {
                       <h3>{product.name}</h3>
                       <div>
                         <Image
-                          src={`/../public/images/${product.nationality}.jpeg`}
+                          src={`/images/${product.nationality}.jpeg`}
                           width={300}
                           height={300}
                           alt={product.name}

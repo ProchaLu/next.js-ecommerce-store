@@ -366,7 +366,7 @@ export default function Checkout(props) {
               <div css={checkoutItems} key={`product-li-${product.id}`}>
                 <div css={checkoutItemColumn}>
                   <Image
-                    src={`/../public/images/${product.nationality}.jpeg`}
+                    src={`/images/${product.nationality}.jpeg`}
                     width={75}
                     height={75}
                     alt={product.name}

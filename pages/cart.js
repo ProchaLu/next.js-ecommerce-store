@@ -151,7 +151,7 @@ export default function Cart(props) {
                 <div key={`product-li-${product.id}`} css={cartItemsGrid}>
                   <div>
                     <Image
-                      src={`/../public/images/${product.nationality}.jpeg`}
+                      src={`/images/${product.nationality}.jpeg`}
                       width={100}
                       height={100}
                       alt={product.name}

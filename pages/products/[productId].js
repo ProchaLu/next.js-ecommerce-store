@@ -122,7 +122,7 @@ export default function Products(props) {
         <div css={productContent}>
           <div css={productContentImage}>
             <Image
-              src={`/../public/images/${props.singleProduct.nationality}.jpeg`}
+              src={`/images/${props.singleProduct.nationality}.jpeg`}
               width={500}
               height={500}
               alt={props.singleProduct.name}
