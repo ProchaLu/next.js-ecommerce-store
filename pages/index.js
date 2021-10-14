@@ -1,5 +1,5 @@
 import Head from 'next/head';
-/* import Feature from '../components/Feature'; */
+import Feature from '../components/Feature';
 import HeroImage from '../components/HeroImage';
 import Layout from '../components/Layout';
 import SearchBar from '../components/SearchBar';
@@ -12,7 +12,7 @@ export default function Home() {
       </Head>
       <SearchBar />
       <HeroImage />
-      {/*  <Feature /> */}
+      <Feature />
     </Layout>
   );
 }

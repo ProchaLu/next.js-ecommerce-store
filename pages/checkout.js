@@ -223,7 +223,7 @@ export default function Checkout(props) {
               id="firstname"
               placeholder="Max"
               onChange={(e) => setField('firstname', e.target.value)}
-              isInvalid={!!errors.firstname}
+              /*  isinvalid={!!errors.firstname} */
             />
             {/* last name */}
             <div htmlFor="lastname">
@@ -234,7 +234,7 @@ export default function Checkout(props) {
               id="lastname"
               placeholder="Mustermann"
               onChange={(e) => setField('lastname', e.target.value)}
-              isInvalid={!!errors.lastname}
+              /* isinvalid={!!errors.lastname} */
             />
             {/* mail */}
             <div>
@@ -246,7 +246,7 @@ export default function Checkout(props) {
               id="mail"
               placeholder="max.mustermann@mail.com"
               onChange={(e) => setField('mail', e.target.value)}
-              isInvalid={!!errors.mail}
+              /* isinvalid={!!errors.mail} */
             />
             {/* phone number */}
             <div>
@@ -271,7 +271,7 @@ export default function Checkout(props) {
               id="address"
               placeholder="Street 1"
               onChange={(e) => setField('address', e.target.value)}
-              isInvalid={!!errors.address}
+              /* isinvalid={!!errors.address} */
             />
             {/* ZIP code */}
             <div>
@@ -283,7 +283,7 @@ export default function Checkout(props) {
               id="zipcode"
               placeholder="1010"
               onChange={(e) => setField('zip', e.target.value)}
-              isInvalid={!!errors.zip}
+              /* isinvalid={!!errors.zip} */
             />
             {/* city */}
             <div>
@@ -294,7 +294,7 @@ export default function Checkout(props) {
               id="city"
               placeholder="Vienna"
               onChange={(e) => setField('city', e.target.value)}
-              isInvalid={!!errors.city}
+              /*  isinvalid={!!errors.city} */
             />
             {/* country */}
             <div>
@@ -305,7 +305,7 @@ export default function Checkout(props) {
               id="state"
               placeholder="Austria"
               onChange={(e) => setField('country', e.target.value)}
-              isInvalid={!!errors.country}
+              /* isinvalid={!!errors.country} */
             />
           </div>
           <hr />
@@ -321,7 +321,7 @@ export default function Checkout(props) {
               id="creditcardholder"
               placeholder="Max Mustermann"
               onChange={(e) => setField('creditcardholder', e.target.value)}
-              isInvalid={!!errors.creditcardholder}
+              /* isinvalid={!!errors.creditcardholder} */
             />
             {/* card number */}
             <div>
@@ -333,7 +333,7 @@ export default function Checkout(props) {
               id="creditcardnumber"
               placeholder="4024007103939509"
               onChange={(e) => setField('creditcardnumber', e.target.value)}
-              isInvalid={!!errors.creditcardnumber}
+              /* isinvalid={!!errors.creditcardnumber} */
             />
             {/* expire date */}
             <div>
@@ -345,7 +345,7 @@ export default function Checkout(props) {
               id="creditcardexpirydate"
               placeholder="MM/YY"
               onChange={(e) => setField('creditcardexpirydate', e.target.value)}
-              isInvalid={!!errors.creditcardexpirydate}
+              /*  isinvalid={!!errors.creditcardexpirydate} */
             />
             {/* CCV */}
             <div>
@@ -356,7 +356,7 @@ export default function Checkout(props) {
               id="cvv"
               placeholder="123"
               onChange={(e) => setField('creditcardcvv', e.target.value)}
-              isInvalid={!!errors.creditcardcvv}
+              /* isinvalid={!!errors.creditcardcvv} */
             />
           </div>
         </div>

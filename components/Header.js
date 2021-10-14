@@ -1,56 +1,64 @@
 import { css } from '@emotion/react';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Cookies from 'js-cookie';
 import Image from 'next/image';
 import Link from 'next/link';
 import Logo from '../public/logo/logo_large.png';
 
-const Header = ({ shoppingCart }) => {
-  const navWrapper = css`
-    margin-bottom: 10px;
+const navWrapper = css`
+  margin-bottom: 10px;
+  display: flex;
+  overflow: auto;
+  height: 150px;
+`;
+const headerLogo = css`
+  width: 70vw;
+`;
+const headerCart = css`
+  font-size: 32px;
+
+  a {
+    color: #000;
+  }
+`;
+
+const cart = css`
+  margin-top: 100px;
+`;
+
+const navBar = css`
+  text-transform: uppercase;
+  font-size: 20px;
+  color: #0074d9;
+
+  ul {
     display: flex;
-    overflow: auto;
-    height: 150px;
-  `;
-  const headerLogo = css`
-    width: 70vw;
-  `;
-  const headerCart = css`
-    font-size: 32px;
+    justify-content: space-between;
+  }
 
-    a {
-      color: #000;
-    }
-  `;
-
-  const cart = css`
-    margin-top: 100px;
-  `;
-
-  const navBar = css`
-    text-transform: uppercase;
-    font-size: 20px;
+  li {
+    list-style: none;
+    display: inline-block;
+    text-align: center;
+    padding: 10px;
     color: #0074d9;
 
-    ul {
-      display: flex;
-      justify-content: space-between;
+    &:hover {
+      background-color: #0074d9;
+      border-radius: 10px;
+      color: #fff;
     }
-
-    li {
-      list-style: none;
-      display: inline-block;
-      text-align: center;
-      padding: 10px;
-      color: #0074d9;
-
-      &:hover {
-        background-color: #0074d9;
-        border-radius: 10px;
-        color: #fff;
-      }
+  }
+`;
+const Header = () => {
+  const cartCount = () => {
+    try {
+      return JSON.parse(Cookies.get('cart'));
+    } catch (err) {
+      return;
     }
-  `;
+  };
 
   return (
     <div>
@@ -64,7 +72,7 @@ const Header = ({ shoppingCart }) => {
         </div>
         <div css={headerCart}>
           <div css={cart}>
-            <span>Items in Cart: {shoppingCart}</span>
+            <span>Items in Cart: </span>
             <Link href="/cart/">
               <a>
                 <FontAwesomeIcon icon={faShoppingCart} />

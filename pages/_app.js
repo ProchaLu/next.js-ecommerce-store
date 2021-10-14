@@ -1,13 +1,6 @@
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { css, Global } from '@emotion/react';
 import Head from 'next/head';
-import { useEffect, useState } from 'react';
-import {
-  getCookies,
-  getParsedCookie,
-  setCookies,
-  setParsedCookie,
-} from '../util/cookies';
 
 function MyApp({ Component, pageProps }) {
   // const [shoppingCart, setShoppingCart] = useState([]);
