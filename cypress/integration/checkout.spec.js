@@ -2,22 +2,22 @@ describe('add 1 item to cart and checkout to thank you page', () => {
   it('visits singleProduct page, clicks item, checkout page and thank you', () => {
     cy.visit('http://localhost:3000');
     // get to products page
-    cy.wait(500);
+    cy.wait(1000);
     cy.get('[data-cy="header-allProducts-link"]').should('be.visible').click();
     // get to the first single product item
-    cy.wait(500);
+    cy.wait(1000);
     cy.contains('Nigeria Away Jersey').should('be.visible');
     cy.contains('Colombia Home Jersey').should('be.visible').click();
     // put first item in cart
-    cy.wait(500);
+    cy.wait(1000);
     cy.contains('Colombia Home Jersey').should('be.visible');
     cy.get('[data-cy="add-to-Cart"]').should('be.visible').click();
     // checkout page
-    cy.wait(500);
+    cy.wait(1000);
     cy.contains('Colombia Home Jersey').should('be.visible');
     cy.get('[data-cy="move-to-Checkout"]').should('be.visible').click();
     // enter all forms from checkout page
-    cy.wait(500);
+    cy.wait(1000);
     cy.contains('First Name').should('be.visible');
     cy.get('[data-cy="first-name"]').type('Max');
     cy.get('[data-cy="last-name"]').type('Mustermann');
