@@ -1,10 +1,12 @@
 import { css } from '@emotion/react';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Cookies from 'js-cookie';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect } from 'react';
 import Logo from '../public/logo/logo_large.png';
+import { getParsedCookie } from '../util/cookies';
+import { calcTotalCount } from '../util/functions';
 
 const navWrapper = css`
   margin-bottom: 10px;
@@ -16,7 +18,7 @@ const headerLogo = css`
   width: 70vw;
 `;
 const headerCart = css`
-  font-size: 32px;
+  font-size: 22px;
 
   a {
     color: #000;
@@ -52,13 +54,18 @@ const navBar = css`
   }
 `;
 const Header = () => {
+  // count the items in cart
   const cartCount = () => {
     try {
-      return JSON.parse(Cookies.get('cart'));
+      return getParsedCookie('cart');
     } catch (err) {
       return;
     }
   };
+  const cartItems = cartCount();
+
+  const totalItemsInCart =
+    typeof cartItems === 'undefined' ? 0 : calcTotalCount(cartCount());
 
   return (
     <div>
@@ -72,7 +79,7 @@ const Header = () => {
         </div>
         <div css={headerCart}>
           <div css={cart}>
-            <span>Items in Cart: </span>
+            <p>{totalItemsInCart}</p>
             <Link href="/cart/">
               <a>
                 <FontAwesomeIcon icon={faShoppingCart} />

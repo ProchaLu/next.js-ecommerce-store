@@ -1,15 +1,18 @@
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { css, Global } from '@emotion/react';
 import Head from 'next/head';
+import { useEffect, useState } from 'react';
+import { getParsedCookie } from '../util/cookies';
 
 function MyApp({ Component, pageProps }) {
-  // const [shoppingCart, setShoppingCart] = useState([]);
+  /*   const [shoppingCart, setShoppingCart] = useState([]);
 
-  // Updating the state variable after the page loads, so that we don't run into server-side-rendering inconsistencies
-
-  /*   useEffect(() => {
+  useEffect(() => {
     setShoppingCart(getParsedCookie('cart', shoppingCart));
-  }, [shoppingCart]); */
+    return shoppingCart;
+  }, []);
+
+  console.log(shoppingCart); */
 
   return (
     <>
@@ -31,7 +34,7 @@ function MyApp({ Component, pageProps }) {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <Component
-        /* shoppingCart={shoppingCart}
+        /*        shoppingCart={shoppingCart}
         setShoppingCart={setShoppingCart} */
         {...pageProps}
       />
