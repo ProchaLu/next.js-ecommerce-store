@@ -36,9 +36,8 @@ describe('add 1 item to cart and checkout to thank you page', () => {
     cy.get('[data-cy="creditcardexpirydate"]').type('01/23');
     cy.get('[data-cy="ccv"]').type('123');
     // press pay
-    cy.get('[data-cy="payment"]').should('be.visible').click();
+    cy.wait(2000).get('[data-cy="payment"]').should('be.visible').click();
     // thank you visible
-    cy.wait(2000);
-    cy.contains('THANKS FOR YOUR ORDER').should('be.visible');
+    cy.wait(2000).contains('THANKS FOR YOUR ORDER').should('be.visible');
   });
 });
