@@ -1,34 +1,78 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# E-commerce store - Football Jersey Shop
 
-## Getting Started
+## Description
 
-First, run the development server:
+Football Jersey Shop is not a real company and no purchases can be made.
+This is an E-commerce project for my web development course from https://upleveled.io/.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+Visit my deployed Website here:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+For good user experience please choose a min-width of 700px.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+For the best user experience please choose a min-width of 1000px.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## Functionalities
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- A landing page
+- A products page where all the products are listed.
+- A page for each single product with the ability to change the amount.
+- A shopping cart page with a list of all products. The ability to change the amount, delete one product or delete every product. It shows the total price and the total amount of the products in the shopping cart.
+- A checkout page which shows the items from the shopping cart, shipping and payment information
+- A thank you page after a checkout.
+- The header will show a shopping cart with the current number of items on all pages, it also links to the shopping cart.
 
-## Learn More
+## Technologies
 
-To learn more about Next.js, take a look at the following resources:
+- Next.js
+- React
+- Postgres
+- Emotion
+- Jest unit tests
+- Cypress E2E tests
+- Typescript
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Setup instructions
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- Clone the repository with `git clone <repo>`
+- Setup the database by downloading and installing PostgreSQL
+- Create a user and a database
+- Create a new file `.env`
+- Copy the environment variables from `.env-example` into `.env`
+- Replace the placeholders xxxxx with your username, password and name of database
+- Install dotenv-cli with `yarn add dotenv-cli`
+- Run `yarn install` in your command line
+- Run the migrations with `yarn migrate up`
+- Start the server by running `yarn dev`
 
-## Deploy on Vercel
+## Deploy on Heroku
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Sign up at Heroku: [signup.heroku.com](signup.heroku.com)
+- Create a new App
+- Choose a name and select the "Europe" Region
+- Click "Connect to GitHub"
+- Search for your repository and click on "Connect". Click on "Enable Automatic Deploys"
+- Go to the Overview tab and click "Configure Add-On"
+- Search for "Postgres" and select "Heroku Postgres"
+- Trigger a deploy by pushing your repo to GitHub
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Screenshots
+
+### Landing Page
+
+![LandingPage](./public/images/screenshots/landing-page.png)
+
+### Products Page
+
+![ProductsPage](./public/images/screenshots/products-page.png)
+
+### Single Products Page
+
+![SingleProductsPage](./public/images/screenshots/singleproduct-page.png)
+
+### Shopping Cart Page
+
+![ShoppingCartPage](./public/images/screenshots/shopping-cart.png)
+
+### Checkout Page
+
+![CheckoutPage](./public/images/screenshots/checkout-page.png)
