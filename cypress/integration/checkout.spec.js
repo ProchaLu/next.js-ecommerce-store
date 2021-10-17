@@ -11,7 +11,7 @@ describe('add 1 item to cart and checkout to thank you page', () => {
     cy.contains('Colombia Home Jersey').should('be.visible');
     cy.get('[data-cy="move-to-Checkout"]').should('be.visible').click();
     // enter inputs
-    cy.contains('First Name').shouldU('be.visible');
+    cy.contains('First Name').should('be.visible');
     cy.get('[data-cy="first-name"]').type('Max');
     cy.get('[data-cy="last-name"]').type('Mustermann');
     cy.get('[data-cy="mail"]').type('max@mustermann.at');
