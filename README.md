@@ -46,7 +46,7 @@ For the best user experience please choose a min-width of 1000px.
 
 ## Deploy on Heroku
 
-- Sign up at Heroku: [signup.heroku.com](signup.heroku.com)
+- Sign up at Heroku: https://www.heroku.com/.
 - Create a new App
 - Choose a name and select the "Europe" Region
 - Click "Connect to GitHub"
@@ -63,7 +63,7 @@ For the best user experience please choose a min-width of 1000px.
 
 ### Products Page
 
-![ProductsPage](./public/images/screenshots/products-page.png)
+![ProductsPage](./public/images/screenshots/product-page.png)
 
 ### Single Products Page
 
@@ -71,7 +71,7 @@ For the best user experience please choose a min-width of 1000px.
 
 ### Shopping Cart Page
 
-![ShoppingCartPage](./public/images/screenshots/shopping-cart.png)
+![ShoppingCartPage](./public/images/screenshots/shoppingcart-page.png)
 
 ### Checkout Page
 
