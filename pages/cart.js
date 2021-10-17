@@ -227,6 +227,7 @@ export const getServerSideProps = async (context) => {
   const products = await getProducts();
 
   const rawCookie = context.req.cookies.cart;
+
   const cookieArray = rawCookie ? JSON.parse(rawCookie) : [];
 
   const cartArray = cookieArray.map((p) => {
