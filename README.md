@@ -14,7 +14,7 @@ For the best user experience please choose a min-width of 1000px.
 ## Functionalities
 
 - A landing page
-- A products page where all the products are listed.
+- A products page where all the products are listed, and a search bar to search for the products.
 - A page for each single product with the ability to change the amount.
 - A shopping cart page with a list of all products. The ability to change the amount, delete one product or delete every product. It shows the total price and the total amount of the products in the shopping cart.
 - A checkout page which shows the items from the shopping cart, shipping and payment information

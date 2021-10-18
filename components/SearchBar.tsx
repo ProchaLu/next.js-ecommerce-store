@@ -61,6 +61,7 @@ export default function SearchBar(props: {
       <div css={searchContent}>
         <FontAwesomeIcon css={faStyle} icon={faSearch} />
         <input
+          data-cy="searchbar"
           type="search"
           placeholder="Search..."
           value={props.searchInput}
