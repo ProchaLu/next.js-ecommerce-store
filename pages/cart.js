@@ -12,6 +12,7 @@ import { useEffect, useState } from 'react';
 import Layout from '../components/Layout';
 import {
   addItemByProductId,
+  getCookies,
   setParsedCookie,
   subtractItemByProductId,
 } from '../util/cookies';
@@ -102,6 +103,10 @@ const itemCountStyle = css`
 export default function Cart(props) {
   const [shoppingCart, setShoppingCart] = useState(props.cartArray);
 
+  /*  useEffect(() => {
+    setShoppingCart(getCookies('cart'));
+  }, []); */
+
   const router = useRouter();
 
   const totalSum = calcTotalSum(shoppingCart);
@@ -170,10 +175,10 @@ export default function Cart(props) {
                         <FontAwesomeIcon
                           icon={faMinusCircle}
                           onClick={() => {
-                            const subtractedValue = subtractItemByProductId(
+                            const minusValue = subtractItemByProductId(
                               product.id,
                             );
-                            setShoppingCart(subtractedValue);
+                            setShoppingCart(minusValue);
                           }}
                         />
                       </button>

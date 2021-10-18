@@ -135,19 +135,25 @@ export default function Products(props) {
             {props.singleProduct.description}
             <p>{props.singleProduct.price / 100}€</p>
             <div css={countDiv}>
-              <button
-                css={countButton}
-                onClick={() => {
-                  const subtractedValue = subtractItemByProductId(
-                    props.singleProduct.id,
-                  );
-                  setItemCount(props.singleProduct.itemCount);
-                  setCart(subtractedValue);
-                }}
-              >
-                <FontAwesomeIcon icon={faMinusCircle} />
-              </button>
-              {itemCount}
+              {itemCount >= 2 ? (
+                <button
+                  css={countButton}
+                  onClick={() => {
+                    const subtractedValue = subtractItemByProductId(
+                      props.singleProduct.id,
+                    );
+                    setItemCount(props.singleProduct.itemCount);
+                    setCart(subtractedValue);
+                  }}
+                >
+                  <FontAwesomeIcon icon={faMinusCircle} />
+                </button>
+              ) : (
+                <button css={countButton}>
+                  <FontAwesomeIcon icon={faMinusCircle} />
+                </button>
+              )}
+              {/* {itemCount} */}
               <button
                 css={countButton}
                 onClick={() => {
