@@ -3,7 +3,6 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect } from 'react';
 import Logo from '../public/logo/logo_large.png';
 import { getParsedCookie } from '../util/cookies';
 import { calcTotalCount } from '../util/functions';

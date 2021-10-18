@@ -1,7 +1,6 @@
 import { css } from '@emotion/react';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState } from 'react';
 
 const searchWrapper = css`
   display: flex;
@@ -53,21 +52,21 @@ const faStyle = css`
   top: 5px;
 `;
 
-const SearchBar = () => {
-  const [searchTerm, setSearchTerm] = useState('');
-
+export default function SearchBar(props: {
+  handleSearchInput: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  searchInput: string;
+}) {
   return (
     <div css={searchWrapper}>
       <div css={searchContent}>
         <FontAwesomeIcon css={faStyle} icon={faSearch} />
         <input
+          type="search"
           placeholder="Search..."
-          value={searchTerm}
-          onChange={(event) => setSearchTerm(event.currentTarget.value)}
+          value={props.searchInput}
+          onChange={props.handleSearchInput}
         />
       </div>
     </div>
   );
-};
-
-export default SearchBar;
+}
