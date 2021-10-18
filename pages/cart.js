@@ -8,11 +8,10 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Layout from '../components/Layout';
 import {
   addItemByProductId,
-  getCookies,
   setParsedCookie,
   subtractItemByProductId,
 } from '../util/cookies';
