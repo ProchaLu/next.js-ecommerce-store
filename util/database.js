@@ -1,14 +1,15 @@
 import camelcaseKeys from 'camelcase-keys';
 import dotenvSafe from 'dotenv-safe';
 import postgres from 'postgres';
+import setPostgresDefaultOnHeroku from './setPostgresDefaultsOnHeroku';
+
+setPostgresDefaultOnHeroku();
 
 // Read in the environment variables
 // in the .env file, making it possible
 // to connect to PostgreSQL
 dotenvSafe.config();
 
-// Connect only once to the database
-// https://github.com/vercel/next.js/issues/7811#issuecomment-715259370
 function connectOneTimeToDatabase() {
   let sql;
 
@@ -23,7 +24,6 @@ function connectOneTimeToDatabase() {
     }
     sql = globalThis.__postgresSqlClient;
   }
-
   return sql;
 }
 
