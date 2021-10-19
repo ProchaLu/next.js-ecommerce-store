@@ -102,10 +102,6 @@ const itemCountStyle = css`
 export default function Cart(props) {
   const [shoppingCart, setShoppingCart] = useState(props.cartArray);
 
-  /*  useEffect(() => {
-    setShoppingCart(getCookies('cart'));
-  }, []); */
-
   const router = useRouter();
 
   const totalSum = calcTotalSum(shoppingCart);
@@ -131,6 +127,28 @@ export default function Cart(props) {
     setParsedCookie('cart', newCookieValue);
     setShoppingCart(newCookieValue);
   };
+
+  /*   useEffect(() => {
+    const newFinalShoppingCartArray = props.cartArray
+      // filter out all objects with a quantity below 1
+      .filter((pro) => {
+        const isInSubtractedValue = props.products.find((item) => {
+          return pro.id === item.id;
+        });
+        return isInSubtractedValue;
+      })
+      // update the quantity of objects inside newFinalShoppingCartArray with the quantity inside subtractedValue
+      .map((pro) => {
+        const q = props.products.find((item) => {
+          return item.id === pro.id;
+        }).itemCount;
+
+        pro.itemCount = q;
+        return pro;
+      });
+    setShoppingCart(newFinalShoppingCartArray);
+    // if either of these things changes, then it will update the finalShoppingCart
+  }, [props.products, props.cartArray]); */
 
   return (
     <Layout>

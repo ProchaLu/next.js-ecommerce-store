@@ -1,9 +1,9 @@
 describe('add 1 item to cart and checkout to thank you page', () => {
   it('visits singleProduct page, clicks item, checkout page and thank you', () => {
-    cy.visit('http://localhost:3000/products');
+    cy.visit('http://localhost:3000/products/1');
     // get to the first single product item
-    cy.contains('Nigeria Away Jersey').should('be.visible');
-    cy.contains('Colombia Home Jersey').should('be.visible').click();
+    /*     cy.contains('Nigeria Away Jersey').should('be.visible');
+    cy.contains('Colombia Home Jersey').should('be.visible').click(); */
     // put first item in cart
     cy.contains('Colombia Home Jersey').should('be.visible');
     cy.get('[data-cy="add-to-Cart"]').should('be.visible').click();

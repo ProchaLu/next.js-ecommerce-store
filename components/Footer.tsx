@@ -17,7 +17,7 @@ const Footer = () => {
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
-    background: #0074d9;
+    background: var(--clr-blue);
   `;
 
   const footerContent = css`

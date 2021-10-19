@@ -1,20 +1,16 @@
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { css, Global } from '@emotion/react';
 import Head from 'next/head';
-import { useEffect, useState } from 'react';
-import { getParsedCookie } from '../util/cookies';
 
 export default function MyApp({ Component, pageProps }) {
-  const [shoppingCart, setShoppingCart] = useState([]);
-
-  useEffect(() => {
-    setShoppingCart(getParsedCookie('cart'));
-  }, []);
-
   return (
     <>
       <Global
         styles={css`
+          :root {
+            --clr-blue: #0074d9;
+          }
+
           * {
             box-sizing: border-box;
             margin: 0 auto;
@@ -34,11 +30,7 @@ export default function MyApp({ Component, pageProps }) {
           lang="en"
         />
       </Head>
-      <Component
-        shoppingCart={shoppingCart}
-        setShoppingCart={setShoppingCart}
-        {...pageProps}
-      />
+      <Component {...pageProps} />
     </>
   );
 }

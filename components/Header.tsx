@@ -43,10 +43,10 @@ const navBar = css`
     display: inline-block;
     text-align: center;
     padding: 10px;
-    color: #0074d9;
+    color: var(--clr-blue);
 
     &:hover {
-      background-color: #0074d9;
+      background-color: var(--clr-blue);
       border-radius: 10px;
       color: #fff;
     }
