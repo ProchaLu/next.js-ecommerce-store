@@ -1042,6 +1042,13 @@
   resolved "https://registry.yarnpkg.com/@types/scheduler/-/scheduler-0.16.2.tgz#1a62f89525723dde24ba1b01b092bf5df8ad4d39"
   integrity sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==
 
+"@types/sharp@^0.29.4":
+  version "0.29.4"
+  resolved "https://registry.yarnpkg.com/@types/sharp/-/sharp-0.29.4.tgz#e47d8677befc9944d4b9d76ed837452814166de0"
+  integrity sha512-asrPef2LYenr76zBzyy+Fw40yGzq/q/CY77mUP5n43DnuWjQoOB+8vxnzFcqccz+LF+A7mbnknGCfpVWSG82Bw==
+  dependencies:
+    "@types/node" "*"
+
 "@types/sinonjs__fake-timers@^6.0.2":
   version "6.0.4"
   resolved "https://registry.yarnpkg.com/@types/sinonjs__fake-timers/-/sinonjs__fake-timers-6.0.4.tgz#0ecc1b9259b76598ef01942f547904ce61a6a77d"
@@ -1146,10 +1153,10 @@
     "@typescript-eslint/types" "4.32.0"
     eslint-visitor-keys "^2.0.0"
 
-"@upleveled/eslint-config-upleveled@1.18.0":
-  version "1.18.0"
-  resolved "https://registry.yarnpkg.com/@upleveled/eslint-config-upleveled/-/eslint-config-upleveled-1.18.0.tgz#a014a60b19d8d1d81593e5af9a2c5f449653c3e6"
-  integrity sha512-7FhKjwFlzZf+7fPZ8yWuNPdGF6LCXqZ62GPbIgDls39JounhyndGL2uRgz75xDzLgbKU6p1vM2EONW0L7dIT2g==
+"@upleveled/eslint-config-upleveled@2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@upleveled/eslint-config-upleveled/-/eslint-config-upleveled-2.0.1.tgz#f638d591927939735cd4f23f3d9468cd3c7d097d"
+  integrity sha512-ettrcVje2sIP9de5q21ICQEN2vS8FQYc8YtnnQAtqyJsJhEv83V2wAZJePwa2vRqoL0axzHYt3dqN2V3Ca9S8g==
 
 "@upleveled/eslint-plugin-upleveled@^1.1.0":
   version "1.1.0"
