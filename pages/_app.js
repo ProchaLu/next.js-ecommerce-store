@@ -23,7 +23,7 @@ export default function MyApp({ Component, pageProps }) {
         `}
       />
       <Head>
-        <title>Football Jersey Shop</title>
+        <title>Football Jersey Store</title>
         <meta
           name="viewport"
           content="initial-scale=1.0, width=device-width"

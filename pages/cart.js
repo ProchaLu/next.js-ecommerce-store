@@ -174,8 +174,8 @@ export default function Cart(props) {
                   <div>
                     <Image
                       src={`/images/${product.nationality}.jpeg`}
-                      width={100}
-                      height={100}
+                      width="100"
+                      height="100"
                       alt={product.name}
                     />
                   </div>

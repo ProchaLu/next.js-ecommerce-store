@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "migrate": "dotenv ley",
-    "heroku-postbuild": "yarn migrate up && yarn build"
+    "fly-postbuild": "./postgres-init.sh && yarn migrate up && yarn start"
   },
   "dependencies": {
     "@emotion/babel-plugin": "^11.3.0",
@@ -22,7 +22,7 @@
     "dotenv-safe": "^8.2.0",
     "js-cookie": "^3.0.1",
     "ley": "^0.7.1",
-    "next": "11.1.2",
+    "next": "12",
     "pg-connection-string": "^2.5.0",
     "postgres": "2.0.0-beta.10",
     "react": "17.0.2",

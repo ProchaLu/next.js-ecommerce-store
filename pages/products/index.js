@@ -120,8 +120,8 @@ export default function Products(props) {
                       <div>
                         <Image
                           src={`/images/${product.nationality}.jpeg`}
-                          width={300}
-                          height={300}
+                          width="300"
+                          height="300"
                           alt={product.name}
                         />
                       </div>
